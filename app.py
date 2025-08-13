@@ -104,7 +104,7 @@ def quiz():
 
 
 
-from models import Patient, Questionnaire
+from models import Patient, Questionnaire, Marks  # Import the Patient, Questionnaire, and Marks models
 
 @app.route('/questionnaire', methods=['GET', 'POST'])
 def questionnaire():
@@ -146,6 +146,12 @@ def questionnaire():
         # Determine the next question based on the answer
         next_question_id = current_question['next_question'].get(answer)
 
+        # Check if the answer leads to "End"
+        if next_question_id == "End":
+            # Calculate and store marks before showing thank you page
+            calculate_and_store_marks(patientID)
+            return render_template('thank_you.html')  # Redirect to Thank You page
+
         # If there's a next question, store it in session and redirect to it
         if next_question_id:
             session['current_question_id'] = next_question_id
@@ -164,6 +170,39 @@ def questionnaire():
 
     # If it's a GET request, render the current question
     return render_template('questionnaire.html', question=current_question)
+
+
+def calculate_and_store_marks(patient_id):
+    """Calculate marks based on questionnaire responses and store in Marks table"""
+    try:
+        # Count the number of questionnaire entries for this patient
+        question_count = db.session.query(Questionnaire).filter_by(PatientID=patient_id).count()
+        
+        # Calculate marks (count * 5)
+        calculated_marks = question_count * 5
+        
+        # Check if marks already exist for this patient to avoid duplicates
+        existing_marks = db.session.query(Marks).filter_by(patientId=patient_id).first()
+        
+        if existing_marks:
+            # Update existing marks
+            existing_marks.marks = calculated_marks
+        else:
+            # Create new marks entry
+            new_marks = Marks(patientId=patient_id, marks=calculated_marks)
+            db.session.add(new_marks)
+        
+        db.session.commit()
+        print(f"Marks calculated and stored for patient {patient_id}: {calculated_marks}")
+        
+    except Exception as e:
+        db.session.rollback()
+        print(f"Error calculating marks for patient {patient_id}: {str(e)}")
+
+
+@app.route('/thank_you')
+def thank_you():
+    return render_template('thank_you.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

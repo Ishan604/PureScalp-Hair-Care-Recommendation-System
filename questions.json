@@ -6,7 +6,7 @@
       "answer_options": ["Yes", "No"],
       "next_question": {
         "Yes": 2,
-        "No": 8
+        "No": 3
       }
     },
     {
@@ -14,10 +14,10 @@
       "question": "What products do you use?",
       "answer_options": ["Shampoo", "Conditioner", "Hair Oil", "Other"],
       "next_question": {
-        "Hair Oil": 5,
-        "Shampoo": 5,
-        "Conditioner": 5,
-        "Other": 5
+        "Hair Oil": 4,
+        "Shampoo": 12,
+        "Conditioner": 3,
+        "Other": 3
       }
     },
     {
@@ -26,7 +26,7 @@
       "answer_options": ["Yes", "No"],
       "next_question": {
         "Yes": 6,
-        "No": 7
+        "No": 16
       }
     },
     {
@@ -44,8 +44,8 @@
       "question": "Do you experience hair thinning or hair fall?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 9,
-        "No": 10
+        "Yes": 8,
+        "No": 8
       }
     },
     {
@@ -53,10 +53,10 @@
       "question": "How often do you exercise?",
       "answer_options": ["Daily", "Weekly", "Occasionally", "No"],
       "next_question": {
-        "Daily": 11,
-        "Weekly": 11,
-        "Occasionally": 11,
-        "No": 12
+        "Daily": 16,
+        "Weekly": 16,
+        "Occasionally": 16,
+        "No": 16
       }
     },
     {
@@ -64,8 +64,8 @@
       "question": "Do you have any scalp issues?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 13,
-        "No": 14
+        "Yes": 9,
+        "No": 8
       }
     },
     {
@@ -73,9 +73,9 @@
       "question": "How often do you wash your hair?",
       "answer_options": ["Daily", "Weekly", "Occasionally"],
       "next_question": {
-        "Daily": 12,
-        "Weekly": 12,
-        "Occasionally": 12
+        "Daily": 11,
+        "Weekly": 11,
+        "Occasionally": 11
       }
     },
     {
@@ -83,8 +83,8 @@
       "question": "Do you use any leave-in hair products?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 16,
-        "No": 17
+        "Yes": 5,
+        "No": 5
       }
     },
     {
@@ -92,8 +92,8 @@
       "question": "Do you use any moisturizing products?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 18,
-        "No": 19
+        "Yes": 13,
+        "No": 13
       }
     },
     {
@@ -101,8 +101,8 @@
       "question": "Do you experience dryness or irritation on your skin after using hair products?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 20,
-        "No": 21
+        "Yes": 10,
+        "No": 13
       }
     },
     {
@@ -110,9 +110,9 @@
       "question": "What type of shampoo do you use?",
       "answer_options": ["Chemical-based", "Natural", "Herbal"],
       "next_question": {
-        "Chemical-based": 22,
-        "Natural": 22,
-        "Herbal": 22
+        "Chemical-based": 3,
+        "Natural": 3,
+        "Herbal": 3
       }
     },
     {
@@ -120,8 +120,8 @@
       "question": "Have you tried using hypoallergenic or organic products?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 23,
-        "No": 24
+        "Yes": 14,
+        "No": 14
       }
     },
     {
@@ -129,8 +129,8 @@
       "question": "Are you satisfied with the current condition of your hair?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 25,
-        "No": 26
+        "Yes": 20,
+        "No": 15
       }
     },
     {
@@ -138,9 +138,9 @@
       "question": "How long have you been experiencing these issues?",
       "answer_options": ["Less than a month", "1-6 months", "More than 6 months"],
       "next_question": {
-        "Less than a month": 27,
-        "1-6 months": 27,
-        "More than 6 months": 27
+        "Less than a month": 17,
+        "1-6 months": 17,
+        "More than 6 months": 17
       }
     },
     {
@@ -148,10 +148,10 @@
       "question": "What would you like to improve about your hair?",
       "answer_options": ["Volume", "Shine", "Texture", "Other"],
       "next_question": {
-        "Volume": 28,
-        "Shine": 28,
-        "Texture": 28,
-        "Other": 28
+        "Volume": 7,
+        "Shine": 7,
+        "Texture": 7,
+        "Other": 7
       }
     },
     {
@@ -159,8 +159,8 @@
       "question": "Would you consider using hair growth treatments?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 29,
-        "No": 30
+        "Yes": 19,
+        "No": "End"
       }
     },
     {
@@ -168,9 +168,9 @@
       "question": "How often do you apply moisturizing products?",
       "answer_options": ["Daily", "Weekly", "Never"],
       "next_question": {
-        "Daily": 31,
-        "Weekly": 31,
-        "Never": 31
+        "Daily": "End",
+        "Weekly": "End",
+        "Never": "End"
       }
     },
     {
@@ -178,8 +178,8 @@
       "question": "Do you use a moisturizing shampoo?",
       "answer_options": ["Yes", "No"],
       "next_question": {
-        "Yes": 32,
-        "No": 33
+        "Yes": 18,
+        "No": "End"
       }
     },
     {
@@ -187,9 +187,9 @@
       "question": "How would you rate the health of your hair?",
       "answer_options": ["Very healthy", "Moderate", "Unhealthy"],
       "next_question": {
-        "Very healthy": 34,
-        "Moderate": 34,
-        "Unhealthy": 34
+        "Very healthy": 17,
+        "Moderate": 17,
+        "Unhealthy": 17
       }
     }
   ]
