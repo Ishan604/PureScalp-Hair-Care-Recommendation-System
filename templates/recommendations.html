@@ -16,7 +16,7 @@
         <nav class="navbar">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Hair Care</a></li>
+                <li><a href="/haircare">Hair Care</a></li>
                 <li><a href="/upload">Upload</a></li>
                 <li><a href="/aboutus">About Us</a></li>
                 <li><a href="/patientregistration">Patient Registration</a></li>
@@ -55,18 +55,25 @@
             {% if recommendation and not error %}
             <div class="recommendation-section">
                 <h3 class="section-title">Your Personalized Recommendation</h3>
-                <div class="main-recommendation">
-                    <h4>Recommended Treatment</h4>
-                    <p>{{ recommendation }}</p>
+                <div class="main-recommendation recommendation-with-image">
+                    {% if image_url %}
+                    <div class="recommendation-image">
+                        <img src="{{ image_url }}" alt="Recommended visual" />
+                    </div>
+                    {% endif %}
+                    <div class="recommendation-text">
+                        <h4>Recommended Treatment</h4>
+                        <p>{{ recommendation }}</p>
+                    </div>
                     
-                    <div class="recommendation-meta">
+                    <!-- <div class="recommendation-meta">
                         <div class="match-info">
                             {% if match_type == 'exact' %}
                                 ✓ Exact Score Match
                             {% elif match_type == 'closest' %}
                                 ≈ Closest Score Match
                             {% else %}
-                                ⚡ Backup Recommendation
+                                 Backup Recommendation
                             {% endif %}
                         </div>
                         
@@ -79,7 +86,7 @@
                             <span>{{ "%.0f" | format(confidence * 100) }}%</span>
                         </div>
                         {% endif %}
-                    </div>
+                    </div> -->
 
                     {% if additional_info %}
                     <div class="additional-info">
@@ -87,21 +94,6 @@
                     </div>
                     {% endif %}
                 </div>
-            </div>
-
-            <!-- Source Information -->
-            <div class="source-info">
-                <h5>Recommendation Source</h5>
-                <p><strong>Data Source:</strong> {{ source or "Hair recommendations database" }}</p>
-                <p><strong>Match Type:</strong> 
-                    {% if match_type == 'exact' %}
-                        Exact match found in our recommendations database
-                    {% elif match_type == 'closest' %}
-                        Closest matching score from our recommendations database
-                    {% else %}
-                        Generated using built-in recommendation logic
-                    {% endif %}
-                </p>
             </div>
             {% endif %}
 

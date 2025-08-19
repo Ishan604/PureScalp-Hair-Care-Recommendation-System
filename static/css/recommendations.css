@@ -132,6 +132,32 @@ body {
     border-left: 4px solid var(--primary-color);
 }
 
+/* Image + text layout */
+.recommendation-with-image {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.recommendation-image {
+    width: 100%;
+    max-width: 280px;
+}
+
+.recommendation-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.recommendation-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .main-recommendation h4 {
     color: var(--primary-color);
     margin-bottom: 15px;
@@ -284,6 +310,9 @@ body {
     
     .action-buttons {
         flex-direction: column;
+    }
+    .recommendation-with-image {
+        grid-template-columns: 1fr;
     }
     
     .btn {

@@ -5,7 +5,16 @@ def load_recommendations_data():
     """Load the hair recommendations CSV file"""
     try:
         csv_path = 'datasets/hair_recommendations.csv'
-        df = pd.read_csv(csv_path)
+        df = pd.read_csv(csv_path) # Load the CSV file into a DataFrame
+        
+        # Normalize column names and important fields
+        df.columns = df.columns.str.strip() # Remove any leading/trailing spaces in column names
+        if 'Score' in df.columns:
+            df['Score'] = pd.to_numeric(df['Score'], errors='coerce') # Convert Score to numeric, coerce errors
+        if 'Recommendation' in df.columns:
+            df['Recommendation'] = df['Recommendation'].astype(str).str.strip() # Ensure Recommendation is string and strip spaces
+        if 'Image' in df.columns:
+            df['Image'] = df['Image'].astype(str).str.strip()
         print(f"Recommendations data loaded successfully. Shape: {df.shape}")
         print(f"Columns: {df.columns.tolist()}")
         return df
@@ -34,27 +43,32 @@ def get_recommendation_by_score(patient_score):
         exact_match = df[df['Score'] == patient_score]
         
         if not exact_match.empty:
-            recommendation = exact_match.iloc[0]['Recommendation']
+            row = exact_match.iloc[0]
+            recommendation = row['Recommendation']
+            image_filename = row['Image'] if 'Image' in df.columns else None
             return {
                 'recommendation': recommendation,
                 'score': patient_score,
                 'match_type': 'exact',
-                'source': 'CSV lookup'
+                'source': 'CSV lookup',
+                'image': image_filename
             }
         
         # If no exact match, find the closest score
-        df['score_diff'] = abs(df['Score'] - patient_score)
-        closest_match = df.loc[df['score_diff'].idxmin()]
+        df['score_diff'] = abs(df['Score'] - patient_score) # Calculate the absolute difference from the patient's score
+        closest_match = df.loc[df['score_diff'].idxmin()] # Get the row with the minimum score difference
         
         recommendation = closest_match['Recommendation']
         closest_score = closest_match['Score']
+        image_filename = closest_match['Image'] if 'Image' in df.columns else None
         
         return {
             'recommendation': recommendation,
             'score': patient_score,
             'matched_score': closest_score,
             'match_type': 'closest',
-            'source': 'CSV lookup'
+            'source': 'CSV lookup',
+            'image': image_filename
         }
         
     except Exception as e:

@@ -45,6 +45,11 @@ def recommendations():
                 recommendation_text = recommendation_result.get('recommendation', 'No recommendation available')
                 match_type = recommendation_result.get('match_type', 'unknown')
                 source = recommendation_result.get('source', 'CSV lookup')
+                image_filename = recommendation_result.get('image')
+                image_url = None
+                if image_filename:
+                    # Build url for image in static/img/hair_recommendation_images
+                    image_url = url_for('static', filename=f"img/hair_recommendation_images/{image_filename}")
                 
                 # Additional info for display
                 additional_info = ""
@@ -73,7 +78,8 @@ def recommendations():
             'match_type': match_type,
             'source': source,
             'additional_info': additional_info,
-            'confidence': 1.0 if match_type == 'exact' else 0.8 if match_type == 'closest' else 0.6
+            'confidence': 1.0 if match_type == 'exact' else 0.8 if match_type == 'closest' else 0.6,
+            'image_url': image_url if 'image_url' in locals() else None
         }
         
         return render_template('recommendations.html', **template_data)

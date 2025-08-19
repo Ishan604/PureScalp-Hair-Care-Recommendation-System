@@ -22,3 +22,7 @@ def quiz():
 @main_bp.route('/thank_you')
 def thank_you():
     return render_template('thank_you.html')
+
+@main_bp.route('/haircare')
+def haircare():
+    return render_template('haircare.html')
